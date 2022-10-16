@@ -1,11 +1,5 @@
 'use strict';
 
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// BANKIST APP
-
-// De implementat: printare , responsive-website, customizare totala
-
 // Data
 const account1 = {
   owner: 'Jonas Schmedtmann',
@@ -24,7 +18,7 @@ const account1 = {
     '2022-10-15T10:51:36.790Z',
   ],
   currency: 'EUR',
-  locale: 'pt-PT', // de-DE
+  locale: 'pt-PT',
 };
 
 const account2 = {
@@ -49,7 +43,7 @@ const account2 = {
 
 const account3 = {
   owner: 'Leonte Ionut-Claudiu',
-  movements: [3000, 320, -130, 70, -310, -110, 3450, 605],
+  movements: [3000, 320, -130, 70, -310, -110, 3450, 605, 185],
   interestRate: 1.5,
   pin: 1998,
 
@@ -124,16 +118,11 @@ const formatMovementDate = function (date, locale) {
     Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
 
   const daysPassed = calcDaysPassed(date, new Date());
-  // console.log(daysPassed);
 
   if (daysPassed === 0) return `Today`;
   if (daysPassed === 1) return `Yesterday`;
   if (daysPassed <= 7) return `${daysPassed} days ago`;
   else {
-    // const day = `${date.getDate()}`.padStart(2, 0);
-    // const month = `${date.getMonth() + +1}`.padStart(2, 0);
-    // const year = date.getFullYear();
-    // return `${day}/${month}/${year}`;
     return new Intl.DateTimeFormat(locale).format(date);
   }
 };
@@ -199,7 +188,6 @@ const calcDisplaySummary = function (acc) {
     .filter(mov => mov > 0)
     .map(deposit => (deposit * acc.interestRate) / 100)
     .filter((interest, i, arr) => {
-      // console.log(arr);
       return interest >= 1;
     })
     .reduce((acc, interest) => acc + interest, 0);
@@ -262,11 +250,6 @@ const startLogOutTimer = function () {
 // Login
 let currentAccount, timer;
 
-// // FAKE ALWAYS LOGGED IN
-// currentAccount = account1;
-// updateUI(currentAccount);
-// containerApp.style.opacity = 1;
-
 btnLogin.addEventListener(`click`, function (event) {
   //  Prevent form from submitting (button prevent reloading the page)
   event.preventDefault();
@@ -296,19 +279,10 @@ btnLogin.addEventListener(`click`, function (event) {
       // weekday: `long`,
     };
 
-    // const locale = navigator.language;
-    // console.log(locale);
-
     labelDate.textContent = new Intl.DateTimeFormat(
       currentAccount.locale,
       options
     ).format(now);
-    // const day = `${now.getDate()}`.padStart(2, 0);
-    // const month = `${now.getMonth() + +1}`.padStart(2, 0);
-    // const year = now.getFullYear();
-    // const hour = `${now.getHours()}`.padStart(2, 0);
-    // const min = `${now.getMinutes()}`.padStart(2, 0);
-    // labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`;
 
     // Clear input fields
     inputLoginUsername.value = ``;
@@ -417,7 +391,6 @@ btnClose.addEventListener(`click`, function (e) {
       acc => acc.username === currentAccount.username
     );
     console.log(index);
-    // .indexOf(23)
 
     // Delete account
     accounts.splice(index, 1);
@@ -430,8 +403,6 @@ btnClose.addEventListener(`click`, function (e) {
   inputCloseUsername.value = ``;
   inputClosePin.value = ``;
 });
-
-// console.log(accounts);
 
 // Sorting movements
 let sorted = false;
