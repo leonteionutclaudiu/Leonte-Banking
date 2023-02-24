@@ -2,7 +2,7 @@
 
 // Data
 const account1 = {
-  owner: 'Jonas Schmedtmann',
+  owner: 'John Smith',
   movements: [200, 455.23, -306.5, 25000, -642.21, -133.9, 79.97, 1300],
   interestRate: 1.2, // %
   pin: 1111,
@@ -42,30 +42,10 @@ const account2 = {
 };
 
 const account3 = {
-  owner: 'Leonte Ionut-Claudiu',
-  movements: [3000, 320, -130, 70, -310, -110, 3450, 605, 185],
-  interestRate: 1.5,
-  pin: 1998,
-
-  movementsDates: [
-    '2022-09-18T21:31:17.178Z',
-    '2022-09-23T07:42:02.383Z',
-    '2022-10-10T09:15:04.904Z',
-    '2022-10-11T10:17:24.185Z',
-    '2022-10-12T14:11:59.604Z',
-    '2022-10-13T17:01:17.194Z',
-    '2022-10-14T23:36:17.929Z',
-    '2022-10-15T10:51:36.790Z',
-  ],
-  currency: 'RON',
-  locale: 'ro-RO',
-};
-
-const account4 = {
-  owner: 'Coada Georgiana',
+  owner: 'Leonte Ionut',
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
-  pin: 1999,
+  pin: 1998,
 
   movementsDates: [
     '2022-08-22T21:31:17.178Z',
@@ -81,7 +61,7 @@ const account4 = {
   locale: 'ro-RO',
 };
 
-const accounts = [account1, account2, account3, account4];
+const accounts = [account1, account2, account3];
 
 // Elements
 const labelWelcome = document.querySelector('.welcome');
